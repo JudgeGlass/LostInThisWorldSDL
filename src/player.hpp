@@ -8,7 +8,7 @@
 
 class Player{
     public:
-        Player();
+        Player(Texture *entityTextures);
         ~Player();
         void setPos(int x, int y);
         void render(SDL_Renderer *renderer);
@@ -20,7 +20,9 @@ class Player{
 
         AABB *collider;
     private:
-        
+        Texture *entityTextures;
+        AnimatedTile *animatedTile;
+        int sprites[2] {36, 36+32};
         int x;
         int y;
         

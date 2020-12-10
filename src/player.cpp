@@ -1,22 +1,20 @@
 #include "player.hpp"
 
-Player::Player(){
-    //this->world = world;
+Player::Player(Texture *entityTextures){
+    this->entityTextures = entityTextures;
     collider = new AABB(368, 268, 32, 32, 2);
+
+    animatedTile = new AnimatedTile(sprites, 2, 10, entityTextures);
 }
 
 void Player::render(SDL_Renderer *renderer){
     collider->render(renderer);
+    animatedTile->render(renderer, 368, 268, 4);
 }
 
-int counter = 0;
-void Player::update(int xoff, int yoff){
-    if(counter % 60 == 0){
-        
-        counter = 0;
-    }
 
-    counter++;
+void Player::update(int xoff, int yoff){
+    animatedTile->update();
 }
 
 bool Player::checkCollision(AABB &b1, AABB &b2) {
@@ -34,4 +32,5 @@ void Player::setPos(int x, int y){
 
 Player::~Player(){
     delete collider;
+    delete animatedTile;
 }

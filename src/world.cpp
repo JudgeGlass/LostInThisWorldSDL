@@ -3,8 +3,10 @@
 World::World(SDL_Renderer *renderer){
     levelTextures = new Texture("C:\\Users\\hunte\\Documents\\SDL\\LostInThisWorld\\res\\atlas.png", 16, 16);
     levelTextures->load(renderer);
+    entityTextures = new Texture("C:\\Users\\hunte\\Documents\\SDL\\LostInThisWorld\\res\\entityAtlas.png", 8, 8);
+    entityTextures->load(renderer);
 
-    player = new Player();
+    player = new Player(entityTextures);
     t = new AABB(player->collider->getX(), player->collider->getY(), 34, 32, 254);
 
     for(int x = 0; x < 50; x++){
@@ -118,5 +120,6 @@ bool World::hitWall(){
 
 World::~World(){
     delete t;
+    delete entityTextures;
     delete levelTextures;
 }

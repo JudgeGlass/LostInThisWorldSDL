@@ -34,6 +34,7 @@ class World{
     private:
         //Player
         Texture *levelTextures;
+        Texture *entityTextures;
         std::vector<AABB> tileColliders;
         
         

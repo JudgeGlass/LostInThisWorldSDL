@@ -6,19 +6,24 @@
 
 class AnimatedTile{
     public:
-        AnimatedTile(int *sprites, int delay, Texture *texture){
+        AnimatedTile(int sprites[], int spriteLen, int delay, Texture *texture){
+            this->sprites = new int[spriteLen];
+            this->spriteLen = spriteLen;
             this->sprites = sprites;
             this->delay = delay;
             this->texture = texture;
         }
 
         void update(){
+            std::cout << "INDEX: " << index << "\tCOUNTER: " << counter << "\tDELAY: " << delay << "\tSIZE: " << (sizeof(sprites) / sizeof(sprites[0]))<< std::endl;
             if(counter % delay == 0){
-                if(index + 1 < sizeof(sprites) / sizeof(int)){
+                if(index + 1 < spriteLen){
                     index++;
                 }else{
                     index = 0;
                 }
+
+                counter = 0;
             }
 
             counter++;
@@ -29,9 +34,10 @@ class AnimatedTile{
         }
     private:
         int *sprites;
-        int delay;
-        int index;
-        int counter;
+        int spriteLen = 0;
+        int delay = 0;
+        int index = 0;
+        int counter = 0;
         Texture *texture;
 };
 

@@ -10,7 +10,7 @@ class Texture{
     public:
         Texture(std::string filename, int pw, int ph);
         void load(SDL_Renderer *renderer);
-        void render(SDL_Renderer *renderer, int tile, int x, int y);
+        void render(SDL_Renderer *renderer, int tile, int x, int y, int scale, int rowa);
         int pw;
         int ph;
         std::string filename;

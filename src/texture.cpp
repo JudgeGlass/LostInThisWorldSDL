@@ -19,11 +19,10 @@ void Texture::load(SDL_Renderer *renderer){
     SDL_QueryTexture(texture, NULL, NULL, &w, &h);
 }
 
-void Texture::render(SDL_Renderer *renderer, int index, int x, int y){
-    int sx = (index % 32) * 8;
-    int sy = (index / 32) * 8;
-
-    std::cout << "X: " << sx << "\tY: " << sy << std::endl;
+void Texture::render(SDL_Renderer *renderer, int index, int x, int y, int scale, int rowa){
+    //rowa = row amount ex 32
+    int sx = (index % rowa) * pw;
+    int sy = (index / rowa) * ph;
 
     SDL_Rect spriteTile;
     spriteTile.x = sx;
@@ -34,8 +33,8 @@ void Texture::render(SDL_Renderer *renderer, int index, int x, int y){
     SDL_Rect dst;
     dst.x = x;
     dst.y = y;
-    dst.w = pw*2;
-    dst.h = ph*2;
+    dst.w = pw*scale;
+    dst.h = ph*scale;
 
 
     SDL_RenderCopy(renderer, texture, &spriteTile, &dst);

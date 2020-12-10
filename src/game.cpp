@@ -5,8 +5,6 @@ Game::Game(int width, int height, std::string &title){
     this->height = height;
     this->title = title;
     quit = false;
-    //texture = new Texture("C:\\Users\\hunte\\Documents\\SDL\\LostInThisWorld\\res\\entityAtlas.png", 8, 8);
-    world = new World();
 }
 
 void Game::init(){
@@ -27,13 +25,14 @@ void Game::init(){
         std::cerr << "Error: Could not setup renderer Game:23\n" << "Details: " << SDL_GetError() << std::endl;
         exit(-1);
     }
-    
+    world = new World(renderer);
 }
 
 void Game::loop(){
     while(!quit){
-        handleEvents();
+        
         world->update();
+        handleEvents();
         render();
     }
 }
@@ -41,7 +40,7 @@ void Game::loop(){
 void Game::handleEvents(){
     SDL_Event e;
     while(SDL_PollEvent(&e)){
-        if(e.type == SDL_QUIT){
+        if(e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE){
             quit = true;
         }
     }

@@ -1,11 +1,13 @@
 #include "world.hpp"
 
 World::World(SDL_Renderer *renderer){
-    levelTextures = new Texture("C:\\Users\\hunte\\Documents\\SDL\\LostInThisWorld\\res\\atlas.png", 16, 16);
+    std::string cwd = SDL_GetBasePath();
+
+    levelTextures = new Texture(cwd + "res\\atlas.png", 16, 16);
     levelTextures->load(renderer);
-    entityTextures = new Texture("C:\\Users\\hunte\\Documents\\SDL\\LostInThisWorld\\res\\entityAtlas.png", 8, 8);
+    entityTextures = new Texture(cwd + "res\\entityAtlas.png", 8, 8);
     entityTextures->load(renderer);
-    fontTextures = new Texture("C:\\Users\\hunte\\Documents\\SDL\\LostInThisWorld\\res\\fontAtlas.png", 8, 8);
+    fontTextures = new Texture(cwd + "res\\fontAtlas.png", 8, 8);
     fontTextures->load(renderer);
 
     player = new Player(entityTextures);

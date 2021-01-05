@@ -35,7 +35,6 @@ void Texture::render(SDL_Renderer *renderer, int index, int x, int y, int scale,
     dst.y = y;
     dst.w = pw*scale;
     dst.h = ph*scale;
-
-
+    
     SDL_RenderCopy(renderer, texture, &spriteTile, &dst);
 }

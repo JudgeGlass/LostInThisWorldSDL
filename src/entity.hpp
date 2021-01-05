@@ -5,8 +5,8 @@
 
 class Entity{
     public:
-        virtual void render(SDL_Renderer *renderer) {};
-        virtual void update() {};
+        virtual void render(SDL_Renderer *renderer) = 0;
+        virtual void update() = 0;
     private:
 
     protected:

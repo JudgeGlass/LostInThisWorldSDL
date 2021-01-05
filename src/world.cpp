@@ -20,6 +20,7 @@ World::World(SDL_Renderer *renderer){
         }
     }
 
+    entities.push_back(std::make_unique<Key>(100, 100, entityTextures));
 }
 
 void World::render(SDL_Renderer *renderer){
@@ -28,29 +29,29 @@ void World::render(SDL_Renderer *renderer){
             switch (data[x + y * 50])
             {
             case 0:
-                levelTextures->render(renderer, 1, (x*32) + xOffset, (y*32) + yOffset, 2, 16);
+                levelTextures->render(renderer, 1, (x*32) + worldXOffset, (y*32) + worldYOffset, 2, 16);
                 break;
             case 1:
-                levelTextures->render(renderer, 2, (x*32) + xOffset, (y*32) + yOffset, 2, 16);
+                levelTextures->render(renderer, 2, (x*32) + worldXOffset, (y*32) + worldYOffset, 2, 16);
                 break;
             case 2:
-                levelTextures->render(renderer, 0, (x*32) + xOffset, (y*32) + yOffset, 2, 16);
+                levelTextures->render(renderer, 0, (x*32) + worldXOffset, (y*32) + worldYOffset, 2, 16);
                 break;
             case 4:
-                levelTextures->render(renderer, 3, (x*32) + xOffset, (y*32) + yOffset, 2, 16);
+                levelTextures->render(renderer, 3, (x*32) + worldXOffset, (y*32) + worldYOffset, 2, 16);
                 break;
             case 3:
-                levelTextures->render(renderer, 252, (x*32) + xOffset, (y*32) + yOffset, 2, 16);
+                levelTextures->render(renderer, 252, (x*32) + worldXOffset, (y*32) + worldYOffset, 2, 16);
                 break;
             default:
-                levelTextures->render(renderer, 44, (x*32) + xOffset, (y*32) + yOffset, 2, 16);
+                levelTextures->render(renderer, 44, (x*32) + worldXOffset, (y*32) + worldYOffset, 2, 16);
                 break;
             }
         }
     }
 
     for(AABB &collider: tileColliders){
-        collider.updatePos(xOffset, yOffset);
+        collider.updatePos(worldXOffset, worldYOffset);
         //collider.render(renderer);
     }
 
@@ -61,34 +62,34 @@ void World::render(SDL_Renderer *renderer){
 
 void World::update(){
     hud->update();
-    player->update(xOffset, yOffset);
+    player->update(worldXOffset, worldYOffset);
 
     const Uint8 *keystate = SDL_GetKeyboardState(NULL);
     if(keystate[SDL_SCANCODE_A]){
         dir = LEFT;
         if(!hitWall()){
-            xOffset += 4;
+            worldXOffset += 4;
         }
     }
 
     if(keystate[SDL_SCANCODE_D]){
         dir = RIGHT;
         if(!hitWall()){
-            xOffset -= 4;
+            worldXOffset -= 4;
         }
     }
 
     if(keystate[SDL_SCANCODE_W]){
         dir = UP;
         if(!hitWall()){
-            yOffset += 4;
+            worldYOffset += 4;
         }
     }
 
     if(keystate[SDL_SCANCODE_S]){
         dir = DOWN;
         if(!hitWall()){
-            yOffset -= 4;
+            worldYOffset -= 4;
         }
     }
 

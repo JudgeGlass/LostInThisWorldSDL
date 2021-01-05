@@ -4,11 +4,14 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 #include <vector>
+#include <memory>
 
 #include "texture.hpp"
 #include "aabb.hpp"
 #include "player.hpp"
 #include "hud.hpp"
+#include "game_vars.hpp"
+#include "key.hpp"
 
 class World{
     public:
@@ -18,8 +21,6 @@ class World{
         void update();
         bool hitWall();
 
-        int xOffset = 0;
-        int yOffset = 0;
         Player *player;
         HUD *hud;
 

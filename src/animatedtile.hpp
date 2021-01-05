@@ -15,7 +15,7 @@ class AnimatedTile{
         }
 
         void update(){
-            std::cout << "INDEX: " << index << "\tCOUNTER: " << counter << "\tDELAY: " << delay << "\tSIZE: " << (sizeof(sprites) / sizeof(sprites[0]))<< std::endl;
+            //std::cout << "INDEX: " << index << "\tCOUNTER: " << counter << "\tDELAY: " << delay << "\tSIZE: " << (sizeof(sprites) / sizeof(sprites[0]))<< std::endl;
             if(counter % delay == 0){
                 if(index + 1 < spriteLen){
                     index++;

@@ -8,6 +8,7 @@
 #include "texture.hpp"
 #include "aabb.hpp"
 #include "player.hpp"
+#include "hud.hpp"
 
 class World{
     public:
@@ -20,6 +21,7 @@ class World{
         int xOffset = 0;
         int yOffset = 0;
         Player *player;
+        HUD *hud;
 
         enum Direction{
             UP,
@@ -35,6 +37,7 @@ class World{
         //Player
         Texture *levelTextures;
         Texture *entityTextures;
+        Texture *fontTextures;
         std::vector<AABB> tileColliders;
         
         

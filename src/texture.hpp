@@ -14,8 +14,9 @@ class Texture{
         int pw;
         int ph;
         std::string filename;
-    private:
         SDL_Texture *texture;
+    private:
+        
 };
 
 #endif

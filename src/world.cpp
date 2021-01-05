@@ -5,8 +5,11 @@ World::World(SDL_Renderer *renderer){
     levelTextures->load(renderer);
     entityTextures = new Texture("C:\\Users\\hunte\\Documents\\SDL\\LostInThisWorld\\res\\entityAtlas.png", 8, 8);
     entityTextures->load(renderer);
+    fontTextures = new Texture("C:\\Users\\hunte\\Documents\\SDL\\LostInThisWorld\\res\\fontAtlas.png", 8, 8);
+    fontTextures->load(renderer);
 
     player = new Player(entityTextures);
+    hud = new HUD(fontTextures);
     t = new AABB(player->collider->getX(), player->collider->getY(), 34, 32, 254);
 
     for(int x = 0; x < 50; x++){
@@ -36,6 +39,9 @@ void World::render(SDL_Renderer *renderer){
             case 4:
                 levelTextures->render(renderer, 3, (x*32) + xOffset, (y*32) + yOffset, 2, 16);
                 break;
+            case 3:
+                levelTextures->render(renderer, 252, (x*32) + xOffset, (y*32) + yOffset, 2, 16);
+                break;
             default:
                 levelTextures->render(renderer, 44, (x*32) + xOffset, (y*32) + yOffset, 2, 16);
                 break;
@@ -45,14 +51,16 @@ void World::render(SDL_Renderer *renderer){
 
     for(AABB &collider: tileColliders){
         collider.updatePos(xOffset, yOffset);
-        collider.render(renderer);
+        //collider.render(renderer);
     }
 
     player->render(renderer);
     t->render(renderer);
+    hud->render(renderer);
 }
 
 void World::update(){
+    hud->update();
     player->update(xOffset, yOffset);
 
     const Uint8 *keystate = SDL_GetKeyboardState(NULL);
@@ -122,4 +130,5 @@ World::~World(){
     delete t;
     delete entityTextures;
     delete levelTextures;
+    delete fontTextures;
 }

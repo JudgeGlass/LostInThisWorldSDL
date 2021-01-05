@@ -36,6 +36,7 @@
         "xutility": "cpp",
         "string": "cpp",
         "tuple": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "algorithm": "cpp"
     }
 }

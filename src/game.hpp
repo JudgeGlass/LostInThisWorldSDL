@@ -7,6 +7,7 @@
 
 #include "texture.hpp"
 #include "world.hpp"
+#include "game_vars.hpp"
 
 class Game{
     public:

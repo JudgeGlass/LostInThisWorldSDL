@@ -32,6 +32,11 @@ void Game::loop(){
     while(!quit){
         
         world->update();
+
+        for(auto &entity: entities){
+            entity->update();
+        }
+
         handleEvents();
         render();
     }
@@ -50,6 +55,11 @@ void Game::render(){
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
     SDL_RenderClear(renderer);
     world->render(renderer);
+    
+    for(auto &entity: entities){
+        entity->render(renderer);
+    }
+
     SDL_RenderPresent(renderer);
 }
 

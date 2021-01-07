@@ -5,8 +5,26 @@
 #include <memory>
 #include "entity.hpp"
 
+typedef uint8_t byte;
+
 inline std::vector<std::unique_ptr<Entity>> entities;
+inline std::vector<int> entityRemoveQueue;
+
+inline void removeEntity(Entity *comp){
+    auto itr = std::find_if(std::begin(entities), 
+                        std::end(entities), 
+                        [comp](auto &element) { return element.get() == comp;});  
+    if(itr != entities.end()){
+        entityRemoveQueue.push_back((itr - entities.begin()));
+    }
+}
+
 inline int worldXOffset = 0;
 inline int worldYOffset = 0;
+
+
+
+//Entities
+inline const byte KEY = 1;
 
 #endif

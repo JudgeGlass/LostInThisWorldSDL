@@ -37,6 +37,12 @@ void Game::loop(){
             entity->update();
         }
 
+        for(auto &index: entityRemoveQueue){
+            entities.erase(entities.begin() + index);
+        }
+
+        entityRemoveQueue.clear();
+
         handleEvents();
         render();
     }

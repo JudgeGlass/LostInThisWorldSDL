@@ -22,7 +22,11 @@ World::World(SDL_Renderer *renderer){
         }
     }
 
-    entities.push_back(std::make_unique<Key>(100, 100, entityTextures));
+    for(int i = 0; i < 16; i++){
+        entities.push_back(std::make_unique<Key>((i * 16)+100, (i * 16)+100, entityTextures, player));
+    }
+
+    entities.push_back(std::make_unique<Key>(100, 100, entityTextures, player));
 }
 
 void World::render(SDL_Renderer *renderer){

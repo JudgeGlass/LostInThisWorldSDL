@@ -103,7 +103,7 @@ void World::update(){
 }
 
 bool World::hitWall(){
-    
+    // Makes AABB collider that is 4px away from the player on all sides and sees if it hits a wall.
     switch (dir)
     {
     case RIGHT:
@@ -138,4 +138,6 @@ World::~World(){
     delete entityTextures;
     delete levelTextures;
     delete fontTextures;
+    delete hud;
+    delete player;
 }

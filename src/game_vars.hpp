@@ -5,11 +5,17 @@
 #include <memory>
 #include "entity.hpp"
 
+//Oh no! Global variables :)
+
 typedef uint8_t byte;
 
 inline std::vector<std::unique_ptr<Entity>> entities;
 inline std::vector<int> entityRemoveQueue;
 
+/*
+ Gets the index of the requested destroy from the entity and
+ adds the index to the list. 
+*/
 inline void removeEntity(Entity *comp){
     auto itr = std::find_if(std::begin(entities), 
                         std::end(entities), 
@@ -24,7 +30,7 @@ inline int worldYOffset = 0;
 
 
 
-//Entities
+//Entities - ID's
 inline const byte KEY = 1;
 
 #endif

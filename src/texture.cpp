@@ -20,7 +20,7 @@ void Texture::load(SDL_Renderer *renderer){
 }
 
 void Texture::render(SDL_Renderer *renderer, int index, int x, int y, int scale, int rowa){
-    //rowa = row amount ex 32
+    //rowa = row amount ex. 32
     int sx = (index % rowa) * pw;
     int sy = (index / rowa) * ph;
 

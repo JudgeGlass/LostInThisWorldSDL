@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 
+// Abstract Art...
 class Entity{
     public:
         virtual void render(SDL_Renderer *renderer) = 0;

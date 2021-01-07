@@ -37,6 +37,8 @@ void Game::loop(){
             entity->update();
         }
 
+        //Removes entities that requesed to be destroyed.
+        // Most likely very inefficient 
         for(auto &index: entityRemoveQueue){
             entities.erase(entities.begin() + index);
         }

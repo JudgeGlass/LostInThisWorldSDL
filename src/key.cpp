@@ -11,7 +11,7 @@ Key::Key(int x, int y, Texture *entityTextures, Player *player){
 
 void Key::render(SDL_Renderer *renderer){
     entityTextures->render(renderer, 4, x + worldXOffset, y + worldYOffset, 2, 32);
-    collider->render(renderer);
+    //collider->render(renderer);
 }
 
 void Key::update(){

@@ -11,7 +11,7 @@ World::World(SDL_Renderer *renderer){
     fontTextures->load(renderer);
 
     player = new Player(entityTextures);
-    hud = new HUD(fontTextures);
+    hud = new HUD(fontTextures, entityTextures);
     t = new AABB(player->collider->getX(), player->collider->getY(), 34, 32, 254);
 
     for(int x = 0; x < 50; x++){

@@ -19,7 +19,7 @@ void HUD::render(SDL_Renderer *renderer){
 }
 
 bool HUD::addToInventory(Entity *e, int amount){
-    for(int x = 0; x < 8; x++){
-        
+    for (auto const& [key, val] : inventory){
+
     }
 }

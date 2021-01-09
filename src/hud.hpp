@@ -18,7 +18,7 @@ class HUD{
         Texture *fontTextures;
         Texture *entityTextures;
 
-        std::map<Entity*, int> inventory[8];
+        std::map<Entity*, int> inventory;
 };
 
 #endif

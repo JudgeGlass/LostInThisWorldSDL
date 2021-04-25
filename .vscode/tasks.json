@@ -4,28 +4,28 @@
 		{
 			"type": "cppbuild",
 			"label": "C/C++: g++.exe build active file",
-			"command": "C:\\MinGW\\bin\\g++.exe",
+			"command": "C:\\CPPComp\\mingw64\\bin\\g++.exe",
 			"args": [
 				"-std=c++17",
 				"-g",
 				"${workspaceFolder}\\src\\*.cpp",
 				"-o",
 				"${workspaceFolder}\\bin\\LITW.exe",
-				"-IC:\\MinGW\\include",
-				"-LC:\\MinGW\\lib",
+				"-IC:\\CPPComp\\mingw64\\include",
+				"-LC:\\CPPComp\\mingw64\\lib",
 				"-lmingw32",
 				"-lSDL2main",
 				"-lSDL2",
 				"-lSDL2_Image"
 			],
 			"options": {
-				"cwd": "C:\\MinGW\\bin"
+				"cwd": "C:\\CPPComp\\mingw64\\bin"
 			},
 			"problemMatcher": [
 				"$gcc"
 			],
 			"group": "build",
-			"detail": "compiler: C:\\MinGW\\bin\\g++.exe"
+			"detail": "compiler: C:\\CPPComp\\mingw64\\bin\\g++.exe"
 		}
 	]
 }

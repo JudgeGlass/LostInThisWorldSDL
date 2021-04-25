@@ -30,7 +30,8 @@ void Game::init(){
 
 void Game::loop(){
     while(!quit){
-        
+        int start = SDL_GetTicks();
+
         world->update();
 
         for(auto &entity: entities){
@@ -46,7 +47,15 @@ void Game::loop(){
         entityRemoveQueue.clear();
 
         handleEvents();
+
         render();
+
+        int time = start - SDL_GetTicks();
+        if(time < 0) continue;
+        int sleep = 13 - time;
+        if(sleep > 0){
+            SDL_Delay(sleep);
+        }
     }
 }
 

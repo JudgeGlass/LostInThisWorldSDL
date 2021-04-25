@@ -1,12 +1,12 @@
 #ifndef HUD_HPP
 #define HUD_HPP
 
-#include <map>
 #include <cassert>
 #include <SDL2/SDL.h>
 #include "texture.hpp"
 #include "font.hpp"
 #include "entity.hpp"
+#include "game_vars.hpp"
 
 class HUD{
     public:
@@ -18,7 +18,7 @@ class HUD{
         Texture *fontTextures;
         Texture *entityTextures;
 
-        std::map<Entity*, int> inventory;
+        
 };
 
 #endif

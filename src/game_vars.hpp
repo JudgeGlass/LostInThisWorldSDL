@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <memory>
+#include <map>
 #include "entity.hpp"
 
 //Oh no! Global variables :)
@@ -27,6 +28,8 @@ inline void removeEntity(Entity *comp){
 
 inline int worldXOffset = 0;
 inline int worldYOffset = 0;
+
+inline std::map<Entity*, int> inventory;
 
 
 

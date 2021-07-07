@@ -4,7 +4,6 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 #include <string>
-#include <direct.h>
 
 #include "texture.hpp"
 #include "world.hpp"

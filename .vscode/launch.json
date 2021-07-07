@@ -9,14 +9,14 @@
             "name": "g++.exe - Build and debug active file",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}\\bin\\LITW.exe",
+            "program": "${workspaceFolder}/bin/LITW",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "C:\\CPPComp\\mingw64\\bin",
+            "cwd": "/bin/",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "C:\\CPPComp\\mingw64\\bin\\gdb.exe",
+            "miDebuggerPath": "/bin/gdb",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",

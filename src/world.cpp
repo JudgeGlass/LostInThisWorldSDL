@@ -3,11 +3,11 @@
 World::World(SDL_Renderer *renderer){
     std::string cwd = SDL_GetBasePath();
 
-    levelTextures = new Texture(cwd + "res\\atlas.png", 16, 16);
+    levelTextures = new Texture(cwd + "res/atlas.png", 16, 16);
     levelTextures->load(renderer);
-    entityTextures = new Texture(cwd + "res\\entityAtlas.png", 8, 8);
+    entityTextures = new Texture(cwd + "res/entityAtlas.png", 8, 8);
     entityTextures->load(renderer);
-    fontTextures = new Texture(cwd + "res\\fontAtlas.png", 8, 8);
+    fontTextures = new Texture(cwd + "res/fontAtlas.png", 8, 8);
     fontTextures->load(renderer);
 
     player = new Player(entityTextures);

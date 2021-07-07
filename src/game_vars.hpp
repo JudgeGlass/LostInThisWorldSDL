@@ -12,6 +12,7 @@ typedef uint8_t byte;
 
 inline std::vector<std::unique_ptr<Entity>> entities;
 inline std::vector<int> entityRemoveQueue;
+inline int fps;
 
 /*
  Gets the index of the requested destroy from the entity and

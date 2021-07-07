@@ -4,6 +4,7 @@
 #include <vector>
 #include <memory>
 #include <map>
+#include <algorithm>
 #include "entity.hpp"
 
 //Oh no! Global variables :)
@@ -12,7 +13,7 @@ typedef uint8_t byte;
 
 inline std::vector<std::unique_ptr<Entity>> entities;
 inline std::vector<int> entityRemoveQueue;
-inline int fps;
+inline float fps;
 
 /*
  Gets the index of the requested destroy from the entity and

@@ -31,6 +31,7 @@ void Game::init(){
 void Game::loop(){
     while(!quit){
         int start = SDL_GetTicks();
+        int startFps = SDL_GetPerformanceCounter();
 
         world->update();
 
@@ -50,6 +51,8 @@ void Game::loop(){
 
         render();
 
+        int endFps = SDL_GetPerformanceCounter();
+        fps = 1 / ((endFps - startFps) / (float)SDL_GetPerformanceFrequency());
         int time = start - SDL_GetTicks();
         if(time < 0) continue;
         int sleep = 13 - time;

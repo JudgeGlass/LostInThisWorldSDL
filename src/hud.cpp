@@ -16,6 +16,8 @@ void HUD::render(SDL_Renderer *renderer){
     drawString(7, 7, text, 0x000000, 2, fontTextures, renderer);
     drawString(5, 5, text, 0xFFFFFF, 2, fontTextures, renderer);
     
+    std::string txt_fps = "FPS: " + std::to_string((int)fps);
+    drawString(5, 20, txt_fps, 0xFFFFFFF, 2, fontTextures, renderer);
 }
 
 bool HUD::addToInventory(Entity *e, int amount){

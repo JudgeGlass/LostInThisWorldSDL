@@ -22,6 +22,12 @@ void Key::update(){
     }
 }
 
+void Key::onTrigger(AABB *playerCollider){
+    if(player->checkCollision(*player->collider, *collider)){
+        removeEntity(this);
+    }
+}
+
 Key::~Key(){
     delete collider;
 }

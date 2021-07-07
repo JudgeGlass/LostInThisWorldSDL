@@ -16,6 +16,7 @@ class Key : public Entity{
         ~Key();
         void render(SDL_Renderer *renderer);
         void update();
+        void onTrigger(AABB *playerCollider);
     private:
         Texture *entityTextures;
         AABB *collider;

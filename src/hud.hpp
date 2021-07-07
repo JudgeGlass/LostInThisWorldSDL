@@ -3,6 +3,7 @@
 
 #include <cassert>
 #include <SDL2/SDL.h>
+#include <string>
 #include "texture.hpp"
 #include "font.hpp"
 #include "entity.hpp"

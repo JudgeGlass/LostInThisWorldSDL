@@ -5,6 +5,7 @@
 #include <vector>
 #include "aabb.hpp"
 #include "animatedtile.hpp"
+#include "game_vars.hpp"
 
 class Player{
     public:

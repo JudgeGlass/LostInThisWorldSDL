@@ -15,6 +15,11 @@ void Player::render(SDL_Renderer *renderer){
 
 void Player::update(int xoff, int yoff){
     animatedTile->update();
+
+
+    for(auto &e: entities){
+        e->onTrigger(collider);
+    }
 }
 
 bool Player::checkCollision(AABB &b1, AABB &b2) {

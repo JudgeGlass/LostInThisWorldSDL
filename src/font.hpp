@@ -18,7 +18,7 @@ static void drawString(int x, int y, std::string text, int color, int scale, Tex
     for(int i = 0; i < text.length(); i++){
         int index = chars.find((char)text[i]);
         if(index >= 0){
-            fontTexture->render(renderer, index, x + i * (fontTexture->pw * 2), y, scale, 32);
+            fontTexture->render(renderer, index, x + i * (fontTexture->pw * scale), y, scale, 32);
         }
     }
 }

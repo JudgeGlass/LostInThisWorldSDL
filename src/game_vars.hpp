@@ -31,7 +31,7 @@ inline void removeEntity(Entity *comp){
 inline int worldXOffset = 0;
 inline int worldYOffset = 0;
 
-inline std::map<Entity*, int> inventory;
+inline std::map<byte, int> inventory;
 
 
 

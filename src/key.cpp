@@ -17,13 +17,17 @@ void Key::render(SDL_Renderer *renderer){
 void Key::update(){
     collider->updatePos(worldXOffset, worldYOffset);
 
-    if(player->checkCollision(*player->collider, *collider)){
-        removeEntity(this);
-    }
+    
 }
 
 void Key::onTrigger(AABB *playerCollider){
     if(player->checkCollision(*player->collider, *collider)){
+        if(inventory.find(KEY) == inventory.end()){
+            inventory[KEY] = 1;
+        }else{
+            inventory.find(KEY)->second++;
+        }
+        
         removeEntity(this);
     }
 }

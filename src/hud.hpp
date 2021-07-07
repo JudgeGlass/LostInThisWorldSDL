@@ -15,6 +15,7 @@ class HUD{
         void update();
         void render(SDL_Renderer *renderer);
         bool addToInventory(Entity *e, int amount);
+        void drawInventory(SDL_Renderer *renderer);
     private:
         Texture *fontTextures;
         Texture *entityTextures;

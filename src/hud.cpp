@@ -18,6 +18,23 @@ void HUD::render(SDL_Renderer *renderer){
     
     std::string txt_fps = "FPS: " + std::to_string((int)fps);
     drawString(5, 20, txt_fps, 0xFFFFFFF, 2, fontTextures, renderer);
+
+    drawInventory(renderer);
+}
+
+void HUD::drawInventory(SDL_Renderer *renderer){
+    for(auto const&[item, amount] : inventory){
+        switch (item)
+        {
+        case KEY:
+            entityTextures->render(renderer, 4, 5, 50, 2, 32);
+            drawString(21, 52, std::to_string(amount), 0xFFFFFF, 1, fontTextures, renderer);
+            break;
+        
+        default:
+            break;
+        }
+    }
 }
 
 bool HUD::addToInventory(Entity *e, int amount){

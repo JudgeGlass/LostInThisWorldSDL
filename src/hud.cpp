@@ -23,18 +23,32 @@ void HUD::render(SDL_Renderer *renderer){
 }
 
 void HUD::drawInventory(SDL_Renderer *renderer){
+    int index = 0;
     for(auto const&[item, amount] : inventory){
         switch (item)
         {
         case KEY:
-            entityTextures->render(renderer, 4, 5, 50, 2, 32);
-            drawString(21, 52, std::to_string(amount), 0xFFFFFF, 1, fontTextures, renderer);
+            drawInventoryItem(index, amount, 4, renderer);
             break;
-        
+        case MAP:
+            drawInventoryItem(index, amount, 42, renderer);
+            break;
         default:
             break;
         }
+
+        index++;
     }
+}
+
+void HUD::drawInventoryItem(int index, int amount, int tile, SDL_Renderer *renderer){
+    int x = 5;
+    int y = 50 + (index * 16);
+    int scale = 2;
+    int rowa = 32;
+
+    entityTextures->render(renderer, tile, x, y, scale, rowa);
+    drawString(x + 18, y + 4, std::to_string(amount), 0xFFFFFF, 1, fontTextures, renderer);
 }
 
 bool HUD::addToInventory(Entity *e, int amount){

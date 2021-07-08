@@ -17,7 +17,15 @@ void Map::render(SDL_Renderer *renderer){
 }
 
 void Map::onTrigger(AABB *playerCollider){
-
+    if(player->checkCollision(*player->collider, *collider)){
+        if(inventory.find(MAP) == inventory.end()){
+            inventory[MAP] = 1;
+        }else{
+            inventory.find(MAP)->second++;
+        }
+        
+        removeEntity(this);
+    }
 }
 
 Map::~Map(){

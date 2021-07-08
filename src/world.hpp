@@ -11,7 +11,9 @@
 #include "player.hpp"
 #include "hud.hpp"
 #include "game_vars.hpp"
+
 #include "key.hpp"
+#include "map.hpp"
 
 class World{
     public:

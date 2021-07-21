@@ -25,7 +25,21 @@ void Game::init(){
         std::cerr << "Error: Could not setup renderer Game:23\n" << "Details: " << SDL_GetError() << std::endl;
         exit(-1);
     }
-    world = new World(renderer);
+
+    std::string cwd = SDL_GetBasePath();
+
+#if _WIN32
+    levelTextures = new Texture(cwd + "res\\atlas.png", 16, 16);
+    entityTextures = new Texture(cwd + "res\\entityAtlas.png", 8, 8);
+    fontTextures = new Texture(cwd + "res\\fontAtlas.png", 8, 8);
+#else
+    levelTextures = new Texture(cwd + "res/atlas.png", 16, 16);
+    entityTextures = new Texture(cwd + "res/entityAtlas.png", 8, 8);
+    fontTextures = new Texture(cwd + "res/fontAtlas.png", 8, 8);
+#endif
+
+    world = new World(renderer, entityTextures, fontTextures, levelTextures);
+    hud = new HUD(fontTextures, entityTextures);
 }
 
 void Game::loop(){
@@ -34,6 +48,7 @@ void Game::loop(){
         int startFps = SDL_GetPerformanceCounter();
 
         world->update();
+        hud->update();
 
         for(auto &entity: entities){
             entity->update();
@@ -80,11 +95,14 @@ void Game::render(){
         entity->render(renderer);
     }
 
+    hud->render(renderer);
+
     SDL_RenderPresent(renderer);
 }
 
 Game::~Game(){
     delete world;
+    delete hud;
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();

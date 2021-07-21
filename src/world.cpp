@@ -1,24 +1,16 @@
 #include "world.hpp"
 
-World::World(SDL_Renderer *renderer){
-    std::string cwd = SDL_GetBasePath();
-
-#if _WIN32
-    levelTextures = new Texture(cwd + "res\\atlas.png", 16, 16);
-    entityTextures = new Texture(cwd + "res\\entityAtlas.png", 8, 8);
-    fontTextures = new Texture(cwd + "res\\fontAtlas.png", 8, 8);
-#else
-    levelTextures = new Texture(cwd + "res/atlas.png", 16, 16);
-    entityTextures = new Texture(cwd + "res/entityAtlas.png", 8, 8);
-    fontTextures = new Texture(cwd + "res/fontAtlas.png", 8, 8);
-#endif
+World::World(SDL_Renderer *renderer, Texture *entityTextures, Texture *fontTextures, Texture *levelTextures){
+    this->entityTextures = entityTextures;
+    this->fontTextures = fontTextures;
+    this->levelTextures = levelTextures;
 
     levelTextures->load(renderer);
     entityTextures->load(renderer);
     fontTextures->load(renderer);
 
     player = new Player(entityTextures);
-    hud = new HUD(fontTextures, entityTextures);
+    
     t = new AABB(player->collider->getX(), player->collider->getY(), 34, 32, 254);
 
     for(int x = 0; x < 50; x++){
@@ -71,11 +63,9 @@ void World::render(SDL_Renderer *renderer){
 
     player->render(renderer);
     t->render(renderer);
-    hud->render(renderer);
 }
 
 void World::update(){
-    hud->update();
     player->update(worldXOffset, worldYOffset);
 
     const Uint8 *keystate = SDL_GetKeyboardState(NULL);
@@ -146,6 +136,5 @@ World::~World(){
     delete entityTextures;
     delete levelTextures;
     delete fontTextures;
-    delete hud;
     delete player;
 }

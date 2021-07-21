@@ -8,6 +8,7 @@
 #include "texture.hpp"
 #include "world.hpp"
 #include "game_vars.hpp"
+#include "hud.hpp"
 
 class Game{
     public:
@@ -25,7 +26,13 @@ class Game{
         std::string title;
         SDL_Window *window;
         SDL_Renderer *renderer;
+
+        Texture *entityTextures;
+        Texture *fontTextures;
+        Texture *levelTextures;
+        
         World *world;
+        HUD *hud;
 };
 
 #endif

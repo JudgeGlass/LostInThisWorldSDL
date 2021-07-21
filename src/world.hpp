@@ -17,14 +17,13 @@
 
 class World{
     public:
-        World(SDL_Renderer *renderer);
+        World(SDL_Renderer *renderer, Texture *entityTextures, Texture *fontTextures, Texture *levelTextures);
         ~World();
         void render(SDL_Renderer *renderer);
         void update();
         bool hitWall();
 
         Player *player;
-        HUD *hud;
 
         enum Direction{
             UP,

@@ -8,9 +8,6 @@
     Copyright (c) 2020-2021 Hunter Wilcox
                             Zicron Technologies
 
-    THIS APPLICATION IS NOT INTENDED TO BE "FREE" SOFTWARE. IF YOU HAVE OBTAINED A COPY OF THE 
-    FOLLOWING SOURCE CODE, PLEASE DELETE AND DO NOT DISTRIBUTE.
-
     Requirements:
         - SDL 2
         - SDL_Image
@@ -19,7 +16,9 @@
 
 // Where is all began...
 int main(int argv, char** args){
-    std::string title = "Lost In This World";
+    const std::string GAME_VERSION = "0.0.2_1a";
+
+    std::string title = "Lost In This World - v" + GAME_VERSION;
     Game game(800, 480, title);
     game.init();
     game.loop();

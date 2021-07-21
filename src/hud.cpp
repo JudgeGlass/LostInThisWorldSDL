@@ -52,9 +52,3 @@ void HUD::drawInventoryItem(int index, int amount, int tile, SDL_Renderer *rende
     entityTextures->render(renderer, tile, x, y, scale, rowa);
     drawString(x + 18, y + 4, std::to_string(amount), 0xFFFFFF, 1, fontTextures, renderer);
 }
-
-bool HUD::addToInventory(Entity *e, int amount){
-    for (auto const& [key, val] : inventory){
-        
-    }
-}

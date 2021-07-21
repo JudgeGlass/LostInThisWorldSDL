@@ -26,6 +26,8 @@ void Game::init(){
         exit(-1);
     }
 
+    SDL_ShowCursor(SDL_DISABLE);
+
     std::string cwd = SDL_GetBasePath();
 
 #if _WIN32
@@ -46,6 +48,8 @@ void Game::loop(){
     while(!quit){
         int start = SDL_GetTicks();
         int startFps = SDL_GetPerformanceCounter();
+
+        SDL_GetMouseState(&mouseX, &mouseY);
 
         world->update();
         hud->update();

@@ -20,6 +20,8 @@ void HUD::render(SDL_Renderer *renderer){
     drawString(5, 20, txt_fps, 0xFFFFFFF, 2, fontTextures, renderer);
 
     drawInventory(renderer);
+
+    entityTextures->render(renderer, 38+32, mouseX, mouseY, 1, 32);
 }
 
 void HUD::drawInventory(SDL_Renderer *renderer){

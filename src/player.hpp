@@ -21,6 +21,8 @@ class Player{
 
         AABB *collider;
     private:
+        void drawDarkness(SDL_Renderer *renderer);
+
         Texture *entityTextures;
         AnimatedTile *animatedTile;
         int sprites[2] {36, 36+32};

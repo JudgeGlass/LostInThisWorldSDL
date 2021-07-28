@@ -10,6 +10,12 @@ Player::Player(Texture *entityTextures){
 void Player::render(SDL_Renderer *renderer){
     collider->render(renderer);
     animatedTile->render(renderer, 368, 268, 4);
+
+    drawDarkness(renderer);
+}
+
+void Player::drawDarkness(SDL_Renderer *renderer){
+    
 }
 
 

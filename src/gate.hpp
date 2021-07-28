@@ -3,6 +3,7 @@
 
 #include "entity.hpp"
 #include "texture.hpp"
+#include "game_vars.hpp"
 
 class Gate : public Entity{
     public:
@@ -12,6 +13,7 @@ class Gate : public Entity{
         void onTrigger(AABB *playerCollider);
     private:
         Texture *entityTextures;
+        AABB *collider;
 };
 
 

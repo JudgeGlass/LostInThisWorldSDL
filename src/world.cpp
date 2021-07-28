@@ -16,8 +16,10 @@ World::World(SDL_Renderer *renderer, Texture *entityTextures, Texture *fontTextu
     for(int x = 0; x < 50; x++){
         for(int y = 0; y < 42; y++){
             uint8_t id = data[x + y * 50];
-            if(id != 2)
+            if(id != 2 && id != 50)
                 tileColliders.push_back(AABB(x*32, y*32, 32, 32, 0));
+
+            
         }
     }
 
@@ -32,7 +34,7 @@ World::World(SDL_Renderer *renderer, Texture *entityTextures, Texture *fontTextu
 void World::render(SDL_Renderer *renderer){
     for(int x = 0; x < 50; x++){
         for(int y = 0; y < 42; y++){
-            switch (data[x + y * 50])
+            switch (data[x + y * 50]) //Level textures
             {
             case 0:
                 levelTextures->render(renderer, 1, (x*32) + worldXOffset, (y*32) + worldYOffset, 2, 16);
@@ -49,9 +51,28 @@ void World::render(SDL_Renderer *renderer){
             case 3:
                 levelTextures->render(renderer, 252, (x*32) + worldXOffset, (y*32) + worldYOffset, 2, 16);
                 break;
+            case GATE:
+                break;
             default:
                 levelTextures->render(renderer, 44, (x*32) + worldXOffset, (y*32) + worldYOffset, 2, 16);
                 break;
+            }
+
+            switch (data[x + y * 50]) //In-world entities
+            {
+            case GATE:
+                levelTextures->render(renderer, 1, (x * 32) + worldXOffset, (y*32) + worldYOffset, 2, 16);
+                entities.push_back(std::make_unique<Gate>(x, y, entityTextures));
+                break;
+            
+            default:
+                break;
+            }
+        }
+
+        for(int x = 0; x < 50; x++){
+            for(int y = 0; y < 42; y++){
+                
             }
         }
     }

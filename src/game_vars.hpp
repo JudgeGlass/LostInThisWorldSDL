@@ -41,5 +41,6 @@ inline std::map<byte, int> inventory;
 //Entities - ID's
 inline const byte KEY = 1;
 inline const byte MAP = 2;
+inline const byte GATE = 50;
 
 #endif

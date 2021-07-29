@@ -99,6 +99,7 @@ void Game::render(){
         entity->render(renderer);
     }
 
+    world->player->render(renderer);
     hud->render(renderer);
 
     SDL_RenderPresent(renderer);

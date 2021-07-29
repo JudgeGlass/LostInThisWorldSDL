@@ -7,7 +7,7 @@
 
 class Gate : public Entity{
     public:
-        Gate(int x, int y, Texture *entityTextures);
+        Gate(int x, int y, Texture *entityTextures, std::vector<AABB> *colliders);
         void render(SDL_Renderer *renderer);
         void update();
         void onTrigger(AABB *playerCollider);

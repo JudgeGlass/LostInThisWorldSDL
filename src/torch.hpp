@@ -5,6 +5,7 @@
 #include "aabb.hpp"
 #include "entity.hpp"
 #include "player.hpp"
+#include "animatedtile.hpp"
 
 class Torch : public Entity{
     public:
@@ -17,9 +18,11 @@ class Torch : public Entity{
 
     private:
         Texture *entityTextures;
+        AnimatedTile *fireTile;
         AABB *collider;
         Player *player;
         bool torchLit;
+        int fireTextureIndex[2] {36, 36+32};
 };
 
 

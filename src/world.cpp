@@ -16,10 +16,20 @@ World::World(SDL_Renderer *renderer, Texture *entityTextures, Texture *fontTextu
     for(int x = 0; x < 50; x++){
         for(int y = 0; y < 42; y++){
             uint8_t id = data[x + y * 50];
-            if(id != 2 && id != 50)
+            if(id != 2 && id != GATE && id != TORCH)
                 tileColliders.push_back(AABB(x*32, y*32, 32, 32, 0));
 
-            
+            switch (data[x + y * 50]) //In-world entities
+            {
+            case GATE:
+                entities.push_back(std::make_unique<Gate>(x, y, entityTextures, &tileColliders));
+                break;
+            case TORCH:
+                entities.push_back(std::make_unique<Torch>(x * 32 + 8, y * 32 + 8, entityTextures, player));
+                break;
+            default:
+                break;
+            }
         }
     }
 
@@ -29,6 +39,9 @@ World::World(SDL_Renderer *renderer, Texture *entityTextures, Texture *fontTextu
     }
 
     entities.push_back(std::make_unique<Key>(100, 100, entityTextures, player));
+    entities.push_back(std::make_unique<Torch>(120, 160, entityTextures, player));
+
+
 }
 
 void World::render(SDL_Renderer *renderer){
@@ -52,6 +65,7 @@ void World::render(SDL_Renderer *renderer){
                 levelTextures->render(renderer, 252, (x*32) + worldXOffset, (y*32) + worldYOffset, 2, 16);
                 break;
             case GATE:
+            case TORCH:
                 break;
             default:
                 levelTextures->render(renderer, 44, (x*32) + worldXOffset, (y*32) + worldYOffset, 2, 16);
@@ -61,20 +75,17 @@ void World::render(SDL_Renderer *renderer){
             switch (data[x + y * 50]) //In-world entities
             {
             case GATE:
-                levelTextures->render(renderer, 1, (x * 32) + worldXOffset, (y*32) + worldYOffset, 2, 16);
-                entities.push_back(std::make_unique<Gate>(x, y, entityTextures));
+                levelTextures->render(renderer, 0, (x * 32) + worldXOffset, (y*32) + worldYOffset, 2, 16);
                 break;
-            
+            case TORCH:
+                levelTextures->render(renderer, 0, (x * 32) + worldXOffset, (y * 32) + worldYOffset, 2, 16);
+                break;
             default:
                 break;
             }
         }
 
-        for(int x = 0; x < 50; x++){
-            for(int y = 0; y < 42; y++){
-                
-            }
-        }
+        
     }
 
     for(AABB &collider: tileColliders){
@@ -82,7 +93,7 @@ void World::render(SDL_Renderer *renderer){
         //collider.render(renderer);
     }
 
-    player->render(renderer);
+    //player->render(renderer);
     t->render(renderer);
 }
 

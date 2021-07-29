@@ -1,11 +1,12 @@
 #include "gate.hpp"
 
-Gate::Gate(int x, int y, Texture *entityTextures){
+Gate::Gate(int x, int y, Texture *entityTextures, std::vector<AABB> *colliders){
     this->x = x;
     this->y = y;
     this->entityTextures = entityTextures;
 
     collider = new AABB(x*32, y*32, 16*6, 16, GATE);
+    colliders->push_back(*collider);
 }
 
 void Gate::update(){

@@ -9,7 +9,7 @@
 
 class Torch : public Entity{
     public:
-        Torch(int x, int y, Texture *entityTextures, Player *player);
+        Torch(int x, int y, Texture *entityTextures, Player *player, int burnTime);
         ~Torch();
         void render(SDL_Renderer *renderer);
         void update();
@@ -23,6 +23,8 @@ class Torch : public Entity{
         Player *player;
         bool torchLit;
         int fireTextureIndex[2] {36, 36+32};
+        int burnTime;       // In Seconds
+        int tickCount = 0;
 };
 
 

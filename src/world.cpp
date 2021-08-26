@@ -19,13 +19,18 @@ World::World(SDL_Renderer *renderer, Texture *entityTextures, Texture *fontTextu
             if(id != 2 && id != GATE && id != TORCH)
                 tileColliders.push_back(AABB(x*32, y*32, 32, 32, 0));
 
+
+            std::vector<Torch> torches;
+
             switch (data[x + y * 50]) //In-world entities
             {
             case GATE:
-                entities.push_back(std::make_unique<Gate>(x, y, entityTextures, &tileColliders));
+                
+                entities.push_back(std::make_unique<Gate>(x, y, entityTextures, &tileColliders, torches));
                 break;
             case TORCH:
-                entities.push_back(std::make_unique<Torch>(x * 32 + 8, y * 32 + 8, entityTextures, player));
+                
+                entities.push_back(std::make_unique<Torch>(x * 32 + 8, y * 32 + 8, entityTextures, player, 60));
                 break;
             default:
                 break;
@@ -39,7 +44,7 @@ World::World(SDL_Renderer *renderer, Texture *entityTextures, Texture *fontTextu
     }
 
     entities.push_back(std::make_unique<Key>(100, 100, entityTextures, player));
-    entities.push_back(std::make_unique<Torch>(120, 160, entityTextures, player));
+    entities.push_back(std::make_unique<Torch>(120, 160, entityTextures, player, 60));
 
 
 }

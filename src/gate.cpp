@@ -1,16 +1,21 @@
 #include "gate.hpp"
 
-Gate::Gate(int x, int y, Texture *entityTextures, std::vector<AABB> *colliders){
+Gate::Gate(int x, int y, Texture *entityTextures, std::vector<AABB> *colliders, std::vector<Torch> torches){
     this->x = x;
     this->y = y;
     this->entityTextures = entityTextures;
+    this->torches = torches;
 
     collider = new AABB(x*32, y*32, 16*6, 16, GATE);
     colliders->push_back(*collider);
 }
 
 void Gate::update(){
-    //collider->updatePos(worldXOffset, worldYOffset);
+    for(auto &torch: torches){
+        if(!torch.isLit()){
+            break;
+        }
+    }
 }
 
 void Gate::render(SDL_Renderer *renderer){
@@ -25,5 +30,5 @@ void Gate::render(SDL_Renderer *renderer){
 
 
 void Gate::onTrigger(AABB *playerCollider){
-
+    
 }

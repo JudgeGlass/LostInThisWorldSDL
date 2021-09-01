@@ -70,14 +70,11 @@ void Game::loop(){
 
         render();
 
+        int end = SDL_GetTicks();
+        float elapsedMS = (end - start) / (float) SDL_GetPerformanceFrequency() * 1000.0f;
+        SDL_Delay(16.66f - elapsedMS);
         int endFps = SDL_GetPerformanceCounter();
         fps = 1 / ((endFps - startFps) / (float)SDL_GetPerformanceFrequency());
-        int time = start - SDL_GetTicks();
-        if(time < 0) continue;
-        int sleep = 13 - time;
-        if(sleep > 0){
-            SDL_Delay(sleep);
-        }
     }
 }
 

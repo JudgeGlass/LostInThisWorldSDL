@@ -21,6 +21,7 @@ void Sound::playSound(const std::string &filename){
 
 void Sound::playMusic(const std::string &filename){
     Mix_FreeMusic(music);
+    music = Mix_LoadMUS(filename.c_str());
 
     Mix_PlayMusic(music, 0);
 }

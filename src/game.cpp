@@ -78,7 +78,7 @@ void Game::loop(){
 
         int end = SDL_GetTicks();
         float elapsedMS = (end - start) / (float) SDL_GetPerformanceFrequency() * 1000.0f;
-        SDL_Delay(16.66f - elapsedMS);
+        SDL_Delay(16.66666f - elapsedMS);
         int endFps = SDL_GetPerformanceCounter();
         fps = 1 / ((endFps - startFps) / (float)SDL_GetPerformanceFrequency());
     }

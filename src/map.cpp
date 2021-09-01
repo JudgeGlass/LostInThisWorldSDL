@@ -23,7 +23,7 @@ void Map::onTrigger(AABB *playerCollider){
         }else{
             inventory.find(MAP)->second++;
         }
-        
+        sound->playSound("/home/judgeglass/Documents/Projects/LostInThisWorldSDL/bin/sound/pickup2.wav");
         removeEntity(this);
     }
 }

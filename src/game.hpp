@@ -31,8 +31,6 @@ class Game{
         Texture *entityTextures;
         Texture *fontTextures;
         Texture *levelTextures;
-
-        Sound *sound;
         
         World *world;
         HUD *hud;

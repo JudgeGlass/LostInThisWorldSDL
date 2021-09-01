@@ -4,5 +4,6 @@ Lost In This World (GPLv3)
    
     Requirements:
         - SDL 2
-        - SDL_Image
+        - SDL2_Image
+        - SDL2_Mixer
         - std=c++17

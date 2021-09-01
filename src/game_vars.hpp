@@ -6,6 +6,7 @@
 #include <map>
 #include <algorithm>
 #include "entity.hpp"
+#include "sound.hpp"
 
 //Oh no! Global variables :)
 
@@ -36,7 +37,7 @@ inline int mouseY;
 
 inline std::map<byte, int> inventory;
 
-
+inline Sound *sound = NULL;
 
 //Entities - ID's
 inline const byte KEY = 1;

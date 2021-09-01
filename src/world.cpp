@@ -46,7 +46,7 @@ World::World(SDL_Renderer *renderer, Texture *entityTextures, Texture *fontTextu
     entities.push_back(std::make_unique<Key>(100, 100, entityTextures, player));
     entities.push_back(std::make_unique<Torch>(120, 160, entityTextures, player, 60));
 
-    sound->playMusic("/home/judgeglass/Documents/Projects/LostInThisWorldSDL/bin/sound/music1.wav");
+    sound->playMusic("sound/music1.wav");
 }
 
 void World::render(SDL_Renderer *renderer){

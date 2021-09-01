@@ -39,7 +39,7 @@ void Torch::render(SDL_Renderer *renderer){
 
 void Torch::onTrigger(AABB *playerCollider){
     if(player->checkCollision(*playerCollider, *collider)){
-        if(!torchLit)sound->playSound("/home/judgeglass/Documents/Projects/LostInThisWorldSDL/bin/sound/fire1.wav");
+        if(!torchLit)sound->playSound("sound/fire1.wav");
         torchLit = true;
         
     }

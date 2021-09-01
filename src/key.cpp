@@ -28,7 +28,7 @@ void Key::onTrigger(AABB *playerCollider){
             inventory.find(KEY)->second++;
         }
         
-        sound->playSound("/home/judgeglass/Documents/Projects/LostInThisWorldSDL/bin/sound/pickup1.wav");
+        sound->playSound("sound/pickup1.wav");
         removeEntity(this);
     }
 }

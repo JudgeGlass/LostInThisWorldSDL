@@ -26,15 +26,15 @@ void Game::init(){
         exit(-1);
     }
 
-    sound = new Sound();
+
+    std::string cwd = SDL_GetBasePath();
+    sound = new Sound(cwd);
     if(!sound->init()){
         std::cerr << "Error: Could not setup sound\nDetails: " << SDL_GetError() << std::endl;
         exit(-1);
     }
 
     SDL_ShowCursor(SDL_DISABLE);
-
-    std::string cwd = SDL_GetBasePath();
 
 #if _WIN32
     levelTextures = new Texture(cwd + "res\\atlas.png", 16, 16);

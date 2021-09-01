@@ -7,7 +7,7 @@
 
 class Sound{
     public:
-        Sound();
+        Sound(const std::string &cwd);
         ~Sound();
         bool init();
         void playSound(const std::string &filename);
@@ -15,6 +15,7 @@ class Sound{
         void stopMusic();
 
     private:
+        std::string cwd;
         Mix_Chunk *soundEffect;
         Mix_Music *music;
 };

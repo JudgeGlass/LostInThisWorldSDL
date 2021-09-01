@@ -1,8 +1,9 @@
 #include "sound.hpp"
 
-Sound::Sound(){
+Sound::Sound(const std::string &cwd){
     music = NULL;
     soundEffect = NULL;
+    this->cwd = cwd;
 }
 
 bool Sound::init(){
@@ -11,7 +12,7 @@ bool Sound::init(){
 
 void Sound::playSound(const std::string &filename){
     Mix_FreeChunk(soundEffect);
-    soundEffect = Mix_LoadWAV(filename.c_str());
+    soundEffect = Mix_LoadWAV((cwd + filename).c_str());
     if(soundEffect == NULL){
         std::cerr << "COULD NOT LOAD WAV FILE: " << filename << std::endl;
     }
@@ -21,7 +22,7 @@ void Sound::playSound(const std::string &filename){
 
 void Sound::playMusic(const std::string &filename){
     Mix_FreeMusic(music);
-    music = Mix_LoadMUS(filename.c_str());
+    music = Mix_LoadMUS((cwd + filename).c_str());
 
     Mix_PlayMusic(music, 0);
 }

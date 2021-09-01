@@ -6,6 +6,7 @@
 #include <string>
 
 #include "texture.hpp"
+#include "sound.hpp"
 #include "world.hpp"
 #include "game_vars.hpp"
 #include "hud.hpp"
@@ -30,6 +31,8 @@ class Game{
         Texture *entityTextures;
         Texture *fontTextures;
         Texture *levelTextures;
+
+        Sound *sound;
         
         World *world;
         HUD *hud;

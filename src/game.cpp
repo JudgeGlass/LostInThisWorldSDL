@@ -8,7 +8,7 @@ Game::Game(int width, int height, std::string &title){
 }
 
 void Game::init(){
-    if(SDL_Init(SDL_INIT_VIDEO) < 0){
+    if(SDL_Init(SDL_INIT_EVERYTHING) < 0){
         std::cerr << "Error: Could not setup video Game:10\n" << "Details: " << SDL_GetError() << std::endl;
         exit(-1);
     }
@@ -23,6 +23,12 @@ void Game::init(){
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if(renderer == nullptr){
         std::cerr << "Error: Could not setup renderer Game:23\n" << "Details: " << SDL_GetError() << std::endl;
+        exit(-1);
+    }
+
+    sound = new Sound();
+    if(!sound->init()){
+        std::cerr << "Error: Could not setup sound\nDetails: " << SDL_GetError() << std::endl;
         exit(-1);
     }
 
@@ -105,6 +111,7 @@ void Game::render(){
 Game::~Game(){
     delete world;
     delete hud;
+    delete sound;
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();

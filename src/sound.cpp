@@ -15,6 +15,7 @@ void Sound::playSound(const std::string &filename){
     soundEffect = Mix_LoadWAV((cwd + filename).c_str());
     if(soundEffect == NULL){
         std::cerr << "COULD NOT LOAD WAV FILE: " << filename << std::endl;
+        return;
     }
 
     Mix_PlayChannel(-1, soundEffect, 0);
@@ -23,6 +24,12 @@ void Sound::playSound(const std::string &filename){
 void Sound::playMusic(const std::string &filename){
     Mix_FreeMusic(music);
     music = Mix_LoadMUS((cwd + filename).c_str());
+    if(music == NULL){
+        std::cerr << "COULD NOT LOAD WAV FILE: " << filename << std::endl;
+        return;
+    }
+
+    std::cout << "Loaded: " << cwd << "/" << filename << std::endl;
 
     Mix_PlayMusic(music, 0);
 }
